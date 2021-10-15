@@ -1,0 +1,33 @@
+version: 1
+formatters:
+  basic:
+    format: '[%(asctime)s : %(module)s : %(lineno)s : %(levelname)s] %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: basic
+    stream: ext://sys.stdout
+  file:
+    class: logging.handlers.RotatingFileHandler
+    maxBytes: 20000000
+    backupCount: 3
+    encoding: utf-8
+    formatter: basic
+    filename: logs/all_messages.log
+loggers:
+  config:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+  slack_conversation_history:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+  helper:
+    level: INFO
+    handlers: [console, file]
+    propagate: no
+root:
+  level: INFO
+  handlers: [console, file]

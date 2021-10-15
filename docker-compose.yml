@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: python main.py
+    volumes:
+      - ./app:/usr/src/app
+    environment:
+      - SLACK_BOT_TOKEN=xoxp-xxxxx
+      - CHANNEL_IDS=["C029JE55LM9", "C02A7TG9RMW"]
+      - OLDEST_DAY_NUM=2
+      - LIMIT=100
